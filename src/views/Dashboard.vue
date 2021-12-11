@@ -1,6 +1,10 @@
 <template>
   <div class="home">
     <h1>{{ message }}</h1>
+    <h1>{{ nfl_articles }}</h1>
+    <h1>{{ nba_articles }}</h1>
+    <h1>{{ filtered_keyword_tweets }}</h1>
+
      <VueRssFeed :feedUrl="nflRotoworldFeed" :name="name" :limit="limit"/>
      <VueRssFeed :feedUrl="nbaRotoworldFeed" :name="name" :limit="limit"/>
      <VueRssFeed :feedUrl="rotoworldFeed" :name="name" :limit="limit"/>
@@ -18,6 +22,7 @@
 <style></style>
 
 <script>
+  import axios from 'axios';
   import VueRssFeed from "vue-rss-feed";
   export default {
     name: "Demo",
@@ -44,11 +49,27 @@
         hoopDoctorsNewsfeed: "http://localhost:3000/hoop_doctors_news",
         hoopDoctorsNewslimit: 1,
         basketballInsidersNewsfeed: "http://localhost:3000/basketball_insiders_news",
-        basketballInsidersNewslimit: 10
+        basketballInsidersNewslimit: 10,
+        nfl_articles: [],
+        nba_articles: [],
+        filtered_keyword_tweets: []
 
       };
     },
-    created: function () {},
+    created: function () {
+     axios.get("http://localhost:3000/nfl_news.json").then(response => {
+        console.log(response.data)
+        this.nfl_articles = response.data
+      }),
+      axios.get("http://localhost:3000/nba_news.json").then(response => {
+        console.log(response.data)
+        this.nba_articles = response.data
+      }),
+      axios.get("http://localhost:3000/filtered_keyword_tweets").then(response => {
+      console.log(response.data)
+      this.filtered_keyword_tweets = response.data
+      })
+    },
     methods: {},
   };
 </script>
