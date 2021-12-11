@@ -1,10 +1,26 @@
 <template>
   <div class="home">
     <h1>{{ message }}</h1>
-    <h1>{{ nfl_articles }}</h1>
-    <h1>{{ nba_articles }}</h1>
-    <h1>{{ filtered_keyword_tweets }}</h1>
 
+    <!-- This is the div for the nfl articles from the NEWS API -->
+    <div v-for="article in nfl_articles.articles">
+    <h1>{{ article.source.name }}</h1>
+    <img v-bind:src="article.urlToImage">
+    <h1>{{ article.title }}</h1>
+    </div>
+
+    <!-- This is the div for the nba articles from the NEWS API -->
+    <div v-for="article in nba_articles.articles">
+    <h1>{{ article.source.name }}</h1>
+    <img v-bind:src="article.urlToImage">
+    <h1>{{ article.title }}</h1>
+    </div>
+
+
+ 
+
+
+      <!-- The RSS Feed Elements -->
      <VueRssFeed :feedUrl="nflRotoworldFeed" :name="name" :limit="limit"/>
      <VueRssFeed :feedUrl="nbaRotoworldFeed" :name="name" :limit="limit"/>
      <VueRssFeed :feedUrl="rotoworldFeed" :name="name" :limit="limit"/>
@@ -15,6 +31,13 @@
      <VueRssFeed :feedUrl="hoopsHypeNewsFeed" :name="name" :limit="hoopsHypeNewslimit"/>
      <VueRssFeed :feedUrl="hoopDoctorsNewsfeed" :name="name" :limit="hoopDoctorsNewslimit"/>
      <VueRssFeed :feedUrl="basketballInsidersNewsfeed" :name="name" :limit="basketballInsidersNewslimit"/>
+
+    
+    <div v-for="filtered_keyword_tweet in filtered_keyword_tweets.data">
+    <h1>{{ filtered_keyword_tweet.id }}</h1>
+    <h1>{{ filtered_keyword_tweet.text }}</h1>
+    <hr/>
+    </div>
 
   </div>
 </template>
