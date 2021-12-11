@@ -10,7 +10,7 @@
   export default {
     data: function () {
       return {
-        message: "This is the home, sign in/sign up page",
+        message: "This is the dashboard",
       };
     },
     created: function () {},
