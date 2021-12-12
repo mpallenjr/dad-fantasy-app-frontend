@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <h1>{{ message }}</h1>
+    <div id="terminal"></div>
 
     <!-- This is the div for the nfl articles from the NEWS API -->
     <div v-for="article in nfl_articles.articles">
@@ -47,6 +48,7 @@
 <script>
   import axios from 'axios';
   import VueRssFeed from "vue-rss-feed";
+  import Terminal from 'xterm';
   export default {
     name: "Demo",
     components: {
@@ -77,7 +79,9 @@
         // End of Rss Feeds
         nfl_articles: [],
         nba_articles: [],
-        filtered_keyword_tweets: []
+        filtered_keyword_tweets: [],
+
+        
 
       };
     },
@@ -96,7 +100,16 @@
       console.log(response.data)
       this.filtered_keyword_tweets = response.data
       })
+
+        
+      
     },
     methods: {},
+    mounted: function () {
+
+      var term = new Terminal();
+        term.open(document.getElementById('terminal'));
+        term.write('Hello from  ')
+    }
   };
 </script>
