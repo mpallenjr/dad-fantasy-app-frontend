@@ -55,6 +55,7 @@
     data: function () {
       return {
         message: "This is the dashboard",
+        // Start of RSS FEEDS
         nflRotoworldFeed: "http://localhost:3000/rotowire_nfl_news",
         name: "",
         limit: 5,
@@ -73,6 +74,7 @@
         hoopDoctorsNewslimit: 1,
         basketballInsidersNewsfeed: "http://localhost:3000/basketball_insiders_news",
         basketballInsidersNewslimit: 10,
+        // End of Rss Feeds
         nfl_articles: [],
         nba_articles: [],
         filtered_keyword_tweets: []
@@ -80,6 +82,7 @@
       };
     },
     created: function () {
+      // NEWS API Calls to Backend
      axios.get("http://localhost:3000/nfl_news.json").then(response => {
         console.log(response.data)
         this.nfl_articles = response.data
@@ -88,6 +91,7 @@
         console.log(response.data)
         this.nba_articles = response.data
       }),
+      // Twitter API calls to Backend     
       axios.get("http://localhost:3000/filtered_keyword_tweets").then(response => {
       console.log(response.data)
       this.filtered_keyword_tweets = response.data
