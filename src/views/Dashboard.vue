@@ -13,7 +13,7 @@
 			<article class="post">
 				<header>
 					<div class="title">
-						{{live_feed_tweets[0]}}
+						{{live_feed_tweets.data.text}}
 					</div>
 				</header>
 			</article>
@@ -613,11 +613,16 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
       console.log(response.data)
       this.filtered_keyword_tweets = response.data
       }),
-			axios.get("http://localhost:3000/live_stream_echos.json").then(response => {
-        console.log(response.data)
-				this.live_feed_tweets = response.data
 
-      })
+			// setInterval( () => { 
+				console.log('web request')
+				axios.get("http://localhost:3000/live_stream_echos").then(response => {
+					// debugger;
+        	console.log(response.data)
+					this.live_feed_tweets = response.data
+     		})
+			// },3000)
+			
 
         
       
