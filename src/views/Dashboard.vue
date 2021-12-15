@@ -7,11 +7,13 @@
 		<!-- Main -->
 		<div id="main">
 
+
+
 			<!-- Post -->
 			<article class="post">
 				<header>
 					<div class="title">
-						<p><VueRssFeed :feedUrl="nflRotoworldFeed" :name="name" :limit="limit"/></p>
+						{{live_feed_tweets[0]}}
 					</div>
 				</header>
 			</article>
@@ -613,6 +615,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
       }),
 			axios.get("http://localhost:3000/live_stream_echos.json").then(response => {
         console.log(response.data)
+				this.live_feed_tweets = response.data
 
       })
 
