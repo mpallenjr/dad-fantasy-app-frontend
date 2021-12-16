@@ -10,14 +10,14 @@
 
 			<!-- Post -->
 			
-      
+     <u> <h1> ***  Scroll Down for the Latest Live Stream Tweet  *** </h1> </u>
 						<pre>
 					<div v-for="tweet in stream_tweets">
 						{{ tweet.data.text }}
 					</div>
 					</pre>
 				
-
+<u><h1> *** NEWS FEED *** </h1></u>
 			<article class="post">
 				<header>
 					<div class="title">
@@ -396,7 +396,8 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				<a href="/dashboard" class="logo"><img src="images/dad-avatar.png" alt="" /></a>
 				<header>
 					<h2>dad's edge</h2>
-					<p>stay first</p>
+					<h3>HEADLINES</h3>
+					<hr/>
 				</header>
 			</section>
 
@@ -442,6 +443,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			</section>
 
 			<!-- Posts List -->
+			<h3> Recent Tweets </h3>
 			<section>
 				<ul class="posts">
 					<div v-for="filtered_keyword_tweet in filtered_keyword_tweets.data">
@@ -454,7 +456,8 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
                 <hr/>
 								<br/>
 						  </article>
-							
+							<hr/>
+
 					  </li>
           </div>
 					<div v-for="filtered_keyword_2_tweet in filtered_keyword_2_tweets.data">
@@ -467,6 +470,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
                 <hr/>
 								<br/>
 						  </article>
+							<hr/>
 							
 					  </li>
           </div>
@@ -480,6 +484,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
                 <hr/>
 								<br/>
 						  </article>
+							<hr/>
 							
 					  </li>
           </div>
@@ -493,17 +498,21 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
                 <hr/>
 								<br/>
 						  </article>
+							<hr/>
 							
 					  </li>
           </div>
 					<br />
-					<br />
-					<br />
-					<br />
+					<h3> Sleeper Up Trend Players </h3>
+					<hr/>
+					<br/>
 					<iframe src="https://sleeper.app/embed/players/nfl/trending/add?lookback_hours=24&limit=25" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
 					<br />
 					<br />
-					
+										<h3> Sleeper Down Trend Players </h3>
+										<hr/>
+										<br/>
+
 					<iframe src="https://sleeper.app/embed/players/nfl/trending/drop?lookback_hours=24&limit=25" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
 		
 
