@@ -1,18 +1,27 @@
 <template>
   <div class="home">
-    <h1>{{ message }}</h1>
-   <a href="dashboard"> <button> Get Started</button></a>
+    <img src="/images/landing-page.png" width=800 height=800 class="center">
+    
+   <a href="dashboard"> <button class="center"> Lets GOOOOOO!!!</button></a>
    
   </div>
 </template>
 
-<style></style>
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height:100%;
+}
+</style>
 
 <script>
   export default {
     data: function () {
       return {
-        message: "click the button to find your edge",
+        
       };
     },
     created: function () {},
