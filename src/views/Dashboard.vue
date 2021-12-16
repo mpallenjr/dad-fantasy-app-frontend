@@ -496,6 +496,17 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 							
 					  </li>
           </div>
+					<br />
+					<br />
+					<br />
+					<br />
+					<iframe src="https://sleeper.app/embed/players/nfl/trending/add?lookback_hours=24&limit=25" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
+					<br />
+					<br />
+					
+					<iframe src="https://sleeper.app/embed/players/nfl/trending/drop?lookback_hours=24&limit=25" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
+		
+
 
 					<!-- <li>
 						<article>
