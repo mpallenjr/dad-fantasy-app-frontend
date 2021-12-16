@@ -42,13 +42,7 @@
 				</header>
 			</article>
 
-      <article class="post">
-				<header>
-					<div class="title">
-						<p><VueRssFeed :feedUrl="ffaNewsFeed" :name="name" :limit="ffalimit"/></p>
-					</div>
-				</header>
-			</article>
+      
 
       <article class="post">
 				<header>
@@ -59,35 +53,12 @@
 			</article>
 
 
-      <article class="post">
-				<header>
-					<div class="title">
-						<p><VueRssFeed :feedUrl="sleeperUNewsFeed" :name="name" :limit="sleeperUlimit"/></p>
-					</div>
-				</header>
-			</article>
 
 
       <article class="post">
 				<header>
 					<div class="title">
 						<p><VueRssFeed :feedUrl="playerProfilerFeed" :name="name" :limit="playerProfilerlimit"/></p>
-					</div>
-				</header>
-			</article>
-
-      <article class="post">
-				<header>
-					<div class="title">
-						<p><VueRssFeed :feedUrl="hoopsHypeNewsFeed" :name="name" :limit="hoopsHypeNewslimit"/></p>
-					</div>
-				</header>
-			</article>
-
-      <article class="post">
-				<header>
-					<div class="title">
-						<p><VueRssFeed :feedUrl="hoopDoctorsNewsfeed" :name="name" :limit="hoopDoctorsNewslimit"/></p>
 					</div>
 				</header>
 			</article>
@@ -483,6 +454,46 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
                 <hr/>
 								<br/>
 						  </article>
+							
+					  </li>
+          </div>
+					<div v-for="filtered_keyword_2_tweet in filtered_keyword_2_tweets.data">
+            <li>
+					    <article>
+							  <header>
+								  <h3>{{ filtered_keyword_2_tweet.text }}</h3>
+								  <time class="published" datetime="2015-10-20">{{ filtered_keyword_2_tweet.id }}</time>
+							  </header>
+                <hr/>
+								<br/>
+						  </article>
+							
+					  </li>
+          </div>
+					<div v-for="filtered_keyword_3_tweet in filtered_keyword_3_tweets.data">
+            <li>
+					    <article>
+							  <header>
+								  <h3>{{ filtered_keyword_3_tweet.text }}</h3>
+								  <time class="published" datetime="2015-10-20">{{ filtered_keyword_3_tweet.id }}</time>
+							  </header>
+                <hr/>
+								<br/>
+						  </article>
+							
+					  </li>
+          </div>
+					<div v-for="filtered_keyword_4_tweet in filtered_keyword_4_tweets.data">
+            <li>
+					    <article>
+							  <header>
+								  <h3>{{ filtered_keyword_4_tweet.text }}</h3>
+								  <time class="published" datetime="2015-10-20">{{ filtered_keyword_4_tweet.id }}</time>
+							  </header>
+                <hr/>
+								<br/>
+						  </article>
+							
 					  </li>
           </div>
 
@@ -616,6 +627,10 @@ pre[class] {
         nfl_articles: [],
         nba_articles: [],
         filtered_keyword_tweets: [],
+				filtered_keyword_2_tweets: [],
+				filtered_keyword_3_tweets: [],
+				filtered_keyword_4_tweets: [],
+
 				stream_tweets: []
         
 
@@ -635,6 +650,18 @@ pre[class] {
       axios.get("http://localhost:3000/filtered_keyword_tweets").then(response => {
       console.log(response.data)
       this.filtered_keyword_tweets = response.data
+      }),
+			axios.get("http://localhost:3000/filtered_keyword_2_tweets").then(response => {
+      console.log(response.data)
+      this.filtered_keyword_2_tweets = response.data
+      }),
+			axios.get("http://localhost:3000/filtered_keyword_3_tweets").then(response => {
+      console.log(response.data)
+      this.filtered_keyword_3_tweets = response.data
+      }),
+			axios.get("http://localhost:3000/filtered_keyword_4_tweets").then(response => {
+      console.log(response.data)
+      this.filtered_keyword_4_tweets = response.data
       }),
 
 			setInterval( () => { 
