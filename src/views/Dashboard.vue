@@ -9,24 +9,14 @@
 
 
 			<!-- Post -->
-			<article class="post">
-				<header>
-					<div class="title">
-						{{live_feed_tweets.data.text}}
-					</div>
-				</header>
-			</article>
-
-
-      <article class="post">
-				<header>
-					<div class="title">
+			
+      
+						<pre>
 					<div v-for="tweet in stream_tweets">
 						{{ tweet.data.text }}
 					</div>
-					</div>
-				</header>
-			</article>
+					</pre>
+				
 
 			<article class="post">
 				<header>
@@ -575,8 +565,24 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
   </div>
 </template>
 
-<style></style>
+<style>
+pre {
+  max-height: 125px;
+	max-width: 100%;
+  overflow-y: auto;
+	white-space: normal;
+}
 
+pre[class] {
+  max-height: 100px;
+}
+
+.scroll-100 {
+  max-height: 75px;
+  overflow-y: auto;
+  background-color: inherit;
+}
+</style>
 <script>
   import axios from 'axios';
   import VueRssFeed from "vue-rss-feed";
@@ -610,7 +616,6 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
         nfl_articles: [],
         nba_articles: [],
         filtered_keyword_tweets: [],
-				live_feed_tweets: [],
 				stream_tweets: []
         
 
@@ -636,10 +641,10 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				axios.get("http://localhost:3000/live_stream_echos").then(response => {
 					// debugger;
         	console.log(response.data)
-					this.live_feed_tweets = response.data // .push? also need if logic to mitigate duplicates
 					// if response.data is the last element of the array dont push (can also manipulate array amount here)
 					
 					this.stream_tweets.push(response.data);
+					
 					console.log("add to stream")
 					console.log(this.stream_tweets)
 			
