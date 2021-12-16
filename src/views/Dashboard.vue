@@ -8,7 +8,6 @@
 		<div id="main">
 
 
-
 			<!-- Post -->
 			<article class="post">
 				<header>
@@ -22,6 +21,24 @@
       <article class="post">
 				<header>
 					<div class="title">
+					<div v-for="tweet in stream_tweets">
+						{{ tweet.data.text }}
+					</div>
+					</div>
+				</header>
+			</article>
+
+			<article class="post">
+				<header>
+					<div class="title">
+						<p><VueRssFeed :feedUrl="nflRotoworldFeed" :name="name" :limit="limit"/></p>
+					</div>
+				</header>
+			</article>
+
+			<article class="post">
+				<header>
+					<div class="title">
 						<p><VueRssFeed :feedUrl="nbaRotoworldFeed" :name="name" :limit="limit"/></p>
 					</div>
 				</header>
@@ -30,7 +47,7 @@
       <article class="post">
 				<header>
 					<div class="title">
-						<p>      <VueRssFeed :feedUrl="rotoworldFeed" :name="name" :limit="limit"/></p>
+						<p><VueRssFeed :feedUrl="rotoworldFeed" :name="name" :limit="limit"/></p>
 					</div>
 				</header>
 			</article>
@@ -38,7 +55,7 @@
       <article class="post">
 				<header>
 					<div class="title">
-						<p>     <VueRssFeed :feedUrl="ffaNewsFeed" :name="name" :limit="ffalimit"/></p>
+						<p><VueRssFeed :feedUrl="ffaNewsFeed" :name="name" :limit="ffalimit"/></p>
 					</div>
 				</header>
 			</article>
@@ -46,7 +63,7 @@
       <article class="post">
 				<header>
 					<div class="title">
-						<p>     <VueRssFeed :feedUrl="dynastyNerdsNewsFeed" :name="name" :limit="limit"/></p>
+						<p><VueRssFeed :feedUrl="dynastyNerdsNewsFeed" :name="name" :limit="limit"/></p>
 					</div>
 				</header>
 			</article>
@@ -431,10 +448,10 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
           <div v-for="article in nfl_articles.articles">
 					<article class="mini-post">
 						<header>
-							<h3><a href="single.html">{{ article.title }}</a></h3>
+							<h3><a v-bind:href="article.url" target="_blank">{{ article.title }}</a></h3>
 							<time class="published" datetime="">{{ article.source.name }}</time>
 						</header>
-						<a href="single.html" class="image"><img v-bind:src="article.urlToImage" alt="" /></a>
+						<a v-bind:href="article.url" target="_blank" class="image"><img v-bind:src="article.urlToImage" alt="" /></a>
 					</article>
           </div>
 
@@ -470,11 +487,11 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
             <li>
 					    <article>
 							  <header>
-								  <h3><a href="single.html">{{ filtered_keyword_tweet.text }}</a></h3>
+								  <h3>{{ filtered_keyword_tweet.text }}</h3>
 								  <time class="published" datetime="2015-10-20">{{ filtered_keyword_tweet.id }}</time>
 							  </header>
-							  <a href="single.html" class="image"><img src="images/pic08.jpg" alt="" /></a>
                 <hr/>
+								<br/>
 						  </article>
 					  </li>
           </div>
@@ -593,7 +610,8 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
         nfl_articles: [],
         nba_articles: [],
         filtered_keyword_tweets: [],
-				live_feed_tweets: []
+				live_feed_tweets: [],
+				stream_tweets: []
         
 
       };
@@ -614,14 +632,19 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
       this.filtered_keyword_tweets = response.data
       }),
 
-			// setInterval( () => { 
-				console.log('web request')
+			setInterval( () => { 
 				axios.get("http://localhost:3000/live_stream_echos").then(response => {
 					// debugger;
         	console.log(response.data)
-					this.live_feed_tweets = response.data
+					this.live_feed_tweets = response.data // .push? also need if logic to mitigate duplicates
+					// if response.data is the last element of the array dont push (can also manipulate array amount here)
+					
+					this.stream_tweets.push(response.data);
+					console.log("add to stream")
+					console.log(this.stream_tweets)
+			
      		})
-			// },3000)
+			},5000)
 			
 
         
