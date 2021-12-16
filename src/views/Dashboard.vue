@@ -393,7 +393,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 			<!-- Intro TOP LEFT -->
 			<section id="intro">
-				<a href="/dashboard" class="logo"><img src="images/dad.png" alt="" /></a>
+				<a href="/dashboard" class="logo"><img src="images/dad-avatar	.png" alt="" /></a>
 				<header>
 					<h2>Dad's App</h2>
 					<p>Where the hype comes together</p>
@@ -577,6 +577,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 </template>
 
 <style>
+
 pre {
   max-height: 125px;
 	max-width: 100%;
