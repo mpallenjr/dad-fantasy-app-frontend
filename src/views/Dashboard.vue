@@ -13,11 +13,30 @@
      <u> <h1> ***  Scroll Down for the Latest Live Stream Tweet  *** </h1> </u>
 						<pre>
 					<div v-for="tweet in stream_tweets">
-						{{ tweet.data.text }}
+					<b>	{{ tweet.data.text }} </b>
+						<hr/>
 					</div>
 					</pre>
-				
-<u><h1> *** NEWS FEED *** </h1></u>
+					<button v-on:click="refreshFeed()"> Refresh Feed </button>
+					<br/>
+					<br/>
+					<br/>
+			
+			
+			
+				<!-- v-on:click="showModal()" -->
+				<dialog id="show-modal">
+					<iframe name="show-modal" title="iframe" width=1200 height=600></iframe>
+
+				<form method="dialog">
+				<button class=center><b>Close</b></button>
+				</form>
+				</dialog>
+		
+		
+
+
+			<u><h1> *** NEWS FEED *** </h1></u>
 			<article class="post">
 				<header>
 					<div class="title">
@@ -58,7 +77,7 @@
       <article class="post">
 				<header>
 					<div class="title">
-						<p><VueRssFeed :feedUrl="playerProfilerFeed" :name="name" :limit="playerProfilerlimit"/></p>
+						<p><VueRssFeed :feedUrl="playerProfilerFeed" :name="name" :limit="playerProfilerlimit" /></p>
 					</div>
 				</header>
 			</article>
@@ -396,8 +415,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				<a href="/dashboard" class="logo"><img src="images/dad-avatar.png" alt="" /></a>
 				<header>
 					<h2>dad's edge</h2>
-					<h3>HEADLINES</h3>
-					<hr/>
+					<u><h3>*** HEADLINES ***</h3></u>
 				</header>
 			</section>
 
@@ -410,10 +428,10 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
           <div v-for="article in nfl_articles.articles">
 					<article class="mini-post">
 						<header>
-							<h3><a v-bind:href="article.url" target="_blank">{{ article.title }}</a></h3>
+							<h3><a  target="show-modal" v-on:click="showModal()">{{ article.title }}</a></h3>
 							<time class="published" datetime="">{{ article.source.name }}</time>
 						</header>
-						<a v-bind:href="article.url" target="_blank" class="image"><img v-bind:src="article.urlToImage" alt="" /></a>
+						<a  v-bind:href="article.url" target="show-modal" v-on:click="showModal()" class="image"><img v-bind:src="article.urlToImage" alt="" /></a>
 					</article>
           </div>
 
@@ -421,11 +439,10 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
           <div v-for="article in nba_articles.articles">
 					<article class="mini-post">
 						<header>
-							<h3><a href="single.html">{{ article.title }}</a></h3>
+							<h3><a target="show-modal" v-on:click="showModal()">{{ article.title }}</a></h3>
 							<time class="published" datetime="">{{ article.source.name }}</time>
-							<a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
 						</header>
-						<a href="single.html" class="image"><img v-bind:src="article.urlToImage" alt="" /></a>
+						<a v-bind:href="article.url" target="show-modal" v-on:click="showModal()" class="image"><img v-bind:src="article.urlToImage" alt="" /></a>
 					</article>
           </div>
 
@@ -443,23 +460,10 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			</section>
 
 			<!-- Posts List -->
-			<h3> Recent Tweets </h3>
+			<h3> *** Recent Tweets *** </h3>
 			<section>
 				<ul class="posts">
-					<div v-for="filtered_keyword_tweet in filtered_keyword_tweets.data">
-            <li>
-					    <article>
-							  <header>
-								  <h3>{{ filtered_keyword_tweet.text }}</h3>
-								  <time class="published" datetime="2015-10-20">{{ filtered_keyword_tweet.id }}</time>
-							  </header>
-                <hr/>
-								<br/>
-						  </article>
-							<hr/>
-
-					  </li>
-          </div>
+					
 					<div v-for="filtered_keyword_2_tweet in filtered_keyword_2_tweets.data">
             <li>
 					    <article>
@@ -503,13 +507,13 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					  </li>
           </div>
 					<br />
-					<h3> Sleeper Up Trend Players </h3>
+					<h3> *** Up Trend Players *** </h3>
 					<hr/>
 					<br/>
 					<iframe src="https://sleeper.app/embed/players/nfl/trending/add?lookback_hours=24&limit=25" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
 					<br />
 					<br />
-										<h3> Sleeper Down Trend Players </h3>
+										<h3> *** Down Trend Players *** </h3>
 										<hr/>
 										<br/>
 
@@ -550,7 +554,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					<li><a href="#" class="icon solid fa-rss"><span class="label">RSS</span></a></li>
 					<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
 				</ul>
-				<p class="copyright">&copy; Dads Fantasy App. Design: <a href="http://html5up.net">HTML5 UP</a>.</p>
+				<p class="copyright">&copy; Dad's Fantasy App. Design: <a href="http://html5up.net">HTML5 UP</a>.</p>
 			</section>
 
 		</section>
@@ -603,6 +607,8 @@ pre {
 	max-width: 100%;
   overflow-y: auto;
 	white-space: normal;
+	border: 2px solid #777;
+
 }
 
 pre[class] {
@@ -687,12 +693,15 @@ pre[class] {
 
 			setInterval( () => { 
 				axios.get("http://localhost:3000/live_stream_echos").then(response => {
-					// debugger;
-        	console.log(response.data)
-					// if response.data is the last element of the array dont push (can also manipulate array amount here)
-					
+					if (this.stream_tweets.length > 0) {
+						if (response.data.data.id !== this.stream_tweets[this.stream_tweets.length-1].data.id) {
 					this.stream_tweets.push(response.data);
-					
+						}
+					} else {
+											this.stream_tweets.push(response.data);
+					}
+        	// console.log(response.data.data.id === stream_tweets[stream_tweets.length-1].data.id)
+					// if response.data is the last element of the array dont push (can also manipulate array amount here)	
 					console.log("add to stream")
 					console.log(this.stream_tweets)
 			
@@ -703,7 +712,22 @@ pre[class] {
         
       
     },
-    methods: {},
+    methods: {
+			refreshFeed: function () {
+				axios.get("http://localhost:3000/live_stream_tweets").then(response => {
+      console.log(response.data)
+      }
+			)
+			},
+			showModal: function () {
+				console.log('modal')
+				document.querySelector("#show-modal").showModal()
+			}
+			
+			
+			
+			},
+
     mounted: function () {
 
     }

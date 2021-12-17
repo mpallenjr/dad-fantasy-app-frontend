@@ -1,7 +1,7 @@
 <template>
   <div class="home">
 <div id="contact">
-  <p> <form id="fs-frm" name="registration-form" accept-charset="utf-8" action="https://formspree.io/f/{form_id}" method="post" class="center">
+  <p> <form id="fs-frm" name="registration-form" accept-charset="utf-8" action="https://formspree.io/f/mayvylad" method="post" class="center">
   <fieldset id="fs-frm-inputs">
     <br />
     <br />
