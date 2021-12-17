@@ -5,7 +5,7 @@
 			<h1><a href="/">Dad's Fantasy Football App</a></h1>
 			<nav class="links">
 				<ul>
-					<li><a href="/signup">Sign Up</a></li>
+					<li><a href="/signup">Subscribe</a></li>
 				</ul>
 			</nav>
 		</header>

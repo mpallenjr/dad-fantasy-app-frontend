@@ -21,22 +21,19 @@
 					<br/>
 					<br/>
 					<br/>
+					<br/>
+					<br/>
 			
 			
 			
-				<!-- v-on:click="showModal()" -->
-				<dialog id="show-modal">
-					<iframe name="show-modal" title="iframe" width=1200 height=600></iframe>
-
-				<form method="dialog">
-				<button class=center><b>Close</b></button>
-				</form>
-				</dialog>
+			
 		
 		
 
 
 			<u><h1> *** NEWS FEED *** </h1></u>
+			<br/>
+			<br/>
 			<article class="post">
 				<header>
 					<div class="title">
@@ -428,10 +425,10 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
           <div v-for="article in nfl_articles.articles">
 					<article class="mini-post">
 						<header>
-							<h3><a  target="show-modal" v-on:click="showModal()">{{ article.title }}</a></h3>
+							<h3><a  v-bind:href="article.url" target="_blank" >{{ article.title }}</a></h3>
 							<time class="published" datetime="">{{ article.source.name }}</time>
 						</header>
-						<a  v-bind:href="article.url" target="show-modal" v-on:click="showModal()" class="image"><img v-bind:src="article.urlToImage" alt="" /></a>
+						<a  v-bind:href="article.url" target="_blank" class="image"><img v-bind:src="article.urlToImage" alt="" /></a>
 					</article>
           </div>
 
@@ -439,10 +436,10 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
           <div v-for="article in nba_articles.articles">
 					<article class="mini-post">
 						<header>
-							<h3><a target="show-modal" v-on:click="showModal()">{{ article.title }}</a></h3>
+							<h3><a  v-bind:href="article.url" target="_blank">{{ article.title }}</a></h3>
 							<time class="published" datetime="">{{ article.source.name }}</time>
 						</header>
-						<a v-bind:href="article.url" target="show-modal" v-on:click="showModal()" class="image"><img v-bind:src="article.urlToImage" alt="" /></a>
+						<a v-bind:href="article.url" target="_blank" v-on:click="showModal()" class="image"><img v-bind:src="article.urlToImage" alt="" /></a>
 					</article>
           </div>
 
@@ -603,7 +600,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 <style>
 
 pre {
-  max-height: 125px;
+  max-height: 300px;
 	max-width: 100%;
   overflow-y: auto;
 	white-space: normal;
@@ -692,7 +689,7 @@ pre[class] {
       }),
 
 			setInterval( () => { 
-				axios.get("http://localhost:3000/live_stream_echos").then(response => {
+				axios.get("http://localhost:3001/live_stream_echos").then(response => {
 					if (this.stream_tweets.length > 0) {
 						if (response.data.data.id !== this.stream_tweets[this.stream_tweets.length-1].data.id) {
 					this.stream_tweets.push(response.data);
@@ -714,7 +711,7 @@ pre[class] {
     },
     methods: {
 			refreshFeed: function () {
-				axios.get("http://localhost:3000/live_stream_tweets").then(response => {
+				axios.get("http://localhost:3001/live_stream_tweets").then(response => {
       console.log(response.data)
       }
 			)
