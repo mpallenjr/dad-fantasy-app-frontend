@@ -590,15 +590,15 @@ pre[class] {
     data: function () {
       return {
         // Start of RSS FEEDS
-        nflRotoworldFeed: "http://localhost:3000/rotowire_nfl_news",
+        nflRotoworldFeed: "https://lit-bastion-35539.herokuapp.com/rotowire_nfl_news",
         name: "",
         limit: 5,
-        nbaRotoworldFeed: "http://localhost:3000/rotowire_nba_news",
-        rotoworldFeed: "http://localhost:3000/rotowire_news",
-        dynastyNerdsNewsFeed: "http://localhost:3000/dynasty_nerds_news",
-        playerProfilerFeed: "http://localhost:3000/player_profiler_news",
+        nbaRotoworldFeed: "https://lit-bastion-35539.herokuapp.com/rotowire_nba_news",
+        rotoworldFeed: "https://lit-bastion-35539.herokuapp.com/rotowire_news",
+        dynastyNerdsNewsFeed: "https://lit-bastion-35539.herokuapp.com/dynasty_nerds_news",
+        playerProfilerFeed: "https://lit-bastion-35539.herokuapp.com/player_profiler_news",
         playerProfilerlimit: 8,
-        basketballInsidersNewsfeed: "http://localhost:3000/basketball_insiders_news",
+        basketballInsidersNewsfeed: "https://lit-bastion-35539.herokuapp.com/basketball_insiders_news",
         basketballInsidersNewslimit: 10,
         // End of Rss Feeds
         nfl_articles: [],
@@ -612,28 +612,28 @@ pre[class] {
     },
     created: function () {
       // NEWS API Calls to Backend
-     axios.get("http://localhost:3000/nfl_news.json").then(response => {
+     axios.get("https://lit-bastion-35539.herokuapp.com/nfl_news.json").then(response => {
         console.log(response.data)
         this.nfl_articles = response.data
       }),
-      axios.get("http://localhost:3000/nba_news.json").then(response => {
+      axios.get("https://lit-bastion-35539.herokuapp.com/nba_news.json").then(response => {
         console.log(response.data)
         this.nba_articles = response.data
       }),
       // Twitter API calls to Backend for Filtered Keyword Search     
-      axios.get("http://localhost:3000/filtered_keyword_tweets").then(response => {
+      axios.get("https://lit-bastion-35539.herokuapp.com/filtered_keyword_tweets").then(response => {
       console.log(response.data)
       this.filtered_keyword_tweets = response.data
       }),
-			axios.get("http://localhost:3000/filtered_keyword_2_tweets").then(response => {
+			axios.get("https://lit-bastion-35539.herokuapp.com/filtered_keyword_2_tweets").then(response => {
       console.log(response.data)
       this.filtered_keyword_2_tweets = response.data
       }),
-			axios.get("http://localhost:3000/filtered_keyword_3_tweets").then(response => {
+			axios.get("https://lit-bastion-35539.herokuapp.com/filtered_keyword_3_tweets").then(response => {
       console.log(response.data)
       this.filtered_keyword_3_tweets = response.data
       }),
-			axios.get("http://localhost:3000/filtered_keyword_4_tweets").then(response => {
+			axios.get("https://lit-bastion-35539.herokuapp.com/filtered_keyword_4_tweets").then(response => {
       console.log(response.data)
       this.filtered_keyword_4_tweets = response.data
       }),
