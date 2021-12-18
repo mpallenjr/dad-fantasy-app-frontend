@@ -654,7 +654,7 @@ pre[class] {
 					console.log(this.stream_tweets)
 			
      		})
-			},5000)
+			},10000)
 			
     },
     methods: {
