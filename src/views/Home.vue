@@ -1,10 +1,7 @@
 <template>
   <div class="home">
     <img src="/images/landing-page.png" width=800 height=800 class="center">
-    
-   <a href="dashboard"> <button class="center"> <b>Lets GOOOOOO!!!</b></button></a>
-   
-   
+    <a href="dashboard"> <button class="center"> <b>Lets GOOOOOO!!!</b></button></a>
   </div>
 </template>
 
@@ -16,15 +13,12 @@
   width: 50%;
   height:100%;
 }
-
-
 </style>
 
 <script>
   export default {
     data: function () {
-      return {
-        
+      return {    
       };
     },
     created: function () {},

@@ -1,93 +1,78 @@
 <template>
   <div class="home">
     <!-- Wrapper -->
-	<div id="wrapper">
-
-		
-		<!-- Main -->
-		<div id="main">
-
-
-			<!-- Post -->
-			
-     <u> <h1> ***  Scroll Down for the Latest Live Stream Tweet  *** </h1> </u>
-						<pre>
+		<div id="wrapper">		
+			<!-- Main -->
+			<div id="main">
+			<!-- Top Of the Page Below Nav Bar -->
+			<!-- Posts -->
+    		<u> <h1> ***  Scroll Down for the Latest Live Stream Tweet  *** </h1> </u>
+				<pre>
 					<div v-for="tweet in stream_tweets">
-					<b>	{{ tweet.data.text }} </b>
+						<b>	{{ tweet.data.text }} </b>
 						<hr/>
 					</div>
-					</pre>
-					<button v-on:click="refreshFeed()"> Refresh Feed </button>
-					<br/>
-					<br/>
-					<br/>
-					<br/>
-					<br/>
+				</pre>
+				<button v-on:click="refreshFeed()"> Refresh Feed </button>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<!-- End of Live twitter feed HTML -->
 			
-			
-			
-			
-		
-		
+				<!-- Start of RSS Feed in content body -->
+				<u><h1> *** NEWS FEED *** </h1></u>
+				<br/>
+				<br/>
+				<article class="post">
+					<header>
+						<div class="title">
+							<p><VueRssFeed :feedUrl="nflRotoworldFeed" :name="name" :limit="limit"/></p>
+						</div>
+					</header>
+				</article>
 
+				<article class="post">
+					<header>
+						<div class="title">
+							<p><VueRssFeed :feedUrl="nbaRotoworldFeed" :name="name" :limit="limit"/></p>
+						</div>
+					</header>
+				</article>
 
-			<u><h1> *** NEWS FEED *** </h1></u>
-			<br/>
-			<br/>
-			<article class="post">
-				<header>
-					<div class="title">
-						<p><VueRssFeed :feedUrl="nflRotoworldFeed" :name="name" :limit="limit"/></p>
-					</div>
-				</header>
-			</article>
+				<article class="post">
+					<header>
+						<div class="title">
+							<p><VueRssFeed :feedUrl="rotoworldFeed" :name="name" :limit="limit"/></p>
+						</div>
+					</header>
+				</article>
 
-			<article class="post">
-				<header>
-					<div class="title">
-						<p><VueRssFeed :feedUrl="nbaRotoworldFeed" :name="name" :limit="limit"/></p>
-					</div>
-				</header>
-			</article>
+				<article class="post">
+					<header>
+						<div class="title">
+							<p><VueRssFeed :feedUrl="dynastyNerdsNewsFeed" :name="name" :limit="limit"/></p>
+						</div>
+					</header>
+				</article>
 
-      <article class="post">
-				<header>
-					<div class="title">
-						<p><VueRssFeed :feedUrl="rotoworldFeed" :name="name" :limit="limit"/></p>
-					</div>
-				</header>
-			</article>
+				<article class="post">
+					<header>
+						<div class="title">
+							<p><VueRssFeed :feedUrl="playerProfilerFeed" :name="name" :limit="playerProfilerlimit" /></p>
+						</div>
+					</header>
+				</article>
 
-      
+				<article class="post">
+					<header>
+						<div class="title">
+							<p><VueRssFeed :feedUrl="basketballInsidersNewsfeed" :name="name" :limit="basketballInsidersNewslimit"/></p>
+						</div>
+					</header>
+				</article>
 
-      <article class="post">
-				<header>
-					<div class="title">
-						<p><VueRssFeed :feedUrl="dynastyNerdsNewsFeed" :name="name" :limit="limit"/></p>
-					</div>
-				</header>
-			</article>
-
-
-
-
-      <article class="post">
-				<header>
-					<div class="title">
-						<p><VueRssFeed :feedUrl="playerProfilerFeed" :name="name" :limit="playerProfilerlimit" /></p>
-					</div>
-				</header>
-			</article>
-
-      <article class="post">
-				<header>
-					<div class="title">
-						<p><VueRssFeed :feedUrl="basketballInsidersNewsfeed" :name="name" :limit="basketballInsidersNewslimit"/></p>
-					</div>
-				</header>
-			</article>
-
-			
 			<!-- Post -->
 			<!--
 							<article class="post">
@@ -401,46 +386,40 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 							</article>
 						 -->
 
-			
-		</div>
+			</div>
 
-		<!-- Sidebar -->
-		<section id="sidebar">
-
-			<!-- Intro TOP LEFT -->
-			<section id="intro">
-				<a href="/dashboard" class="logo"><img src="images/dad-avatar.png" alt="" /></a>
-				<header>
-					<h2>dad's edge</h2>
-					<u><h3>*** HEADLINES ***</h3></u>
-				</header>
-			</section>
-
+			<!-- Sidebar -->
+			<section id="sidebar">
+				<!-- Intro TOP LEFT -->
+				<section id="intro">
+					<a href="/dashboard" class="logo"><img src="images/dad-avatar.png" alt="" /></a>
+					<header>
+						<h2>dad's edge</h2>
+						<u><h3>*** HEADLINES ***</h3></u>
+					</header>
+				</section>
 			<!-- Mini Posts -->
 			<section>
 				<div class="mini-posts">
-
-    
 					<!-- Mini Post NEWS API NFL -->
           <div v-for="article in nfl_articles.articles">
-					<article class="mini-post">
-						<header>
-							<h3><a  v-bind:href="article.url" target="_blank" >{{ article.title }}</a></h3>
-							<time class="published" datetime="">{{ article.source.name }}</time>
-						</header>
+						<article class="mini-post">
+							<header>
+								<h3><a  v-bind:href="article.url" target="_blank" >{{ article.title }}</a></h3>
+								<time class="published" datetime="">{{ article.source.name }}</time>
+							</header>
 						<a  v-bind:href="article.url" target="_blank" class="image"><img v-bind:src="article.urlToImage" alt="" /></a>
-					</article>
+						</article>
           </div>
-
 					<!-- Mini Post NEWS API NBA -->
           <div v-for="article in nba_articles.articles">
-					<article class="mini-post">
-						<header>
-							<h3><a  v-bind:href="article.url" target="_blank">{{ article.title }}</a></h3>
-							<time class="published" datetime="">{{ article.source.name }}</time>
-						</header>
-						<a v-bind:href="article.url" target="_blank" v-on:click="showModal()" class="image"><img v-bind:src="article.urlToImage" alt="" /></a>
-					</article>
+						<article class="mini-post">
+							<header>
+								<h3><a  v-bind:href="article.url" target="_blank">{{ article.title }}</a></h3>
+								<time class="published" datetime="">{{ article.source.name }}</time>
+							</header>
+							<a v-bind:href="article.url" target="_blank" class="image"><img v-bind:src="article.urlToImage" alt="" /></a>
+						</article>
           </div>
 
 					<!-- Mini Post -->
@@ -455,12 +434,11 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 				</div>
 			</section>
-
 			<!-- Posts List -->
+			<!-- Filtered Keyword Tweet Results -->
 			<h3> *** Recent Tweets *** </h3>
 			<section>
 				<ul class="posts">
-					
 					<div v-for="filtered_keyword_2_tweet in filtered_keyword_2_tweets.data">
             <li>
 					    <article>
@@ -472,7 +450,6 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 								<br/>
 						  </article>
 							<hr/>
-							
 					  </li>
           </div>
 					<div v-for="filtered_keyword_3_tweet in filtered_keyword_3_tweets.data">
@@ -486,7 +463,6 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 								<br/>
 						  </article>
 							<hr/>
-							
 					  </li>
           </div>
 					<div v-for="filtered_keyword_4_tweet in filtered_keyword_4_tweets.data">
@@ -500,24 +476,20 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 								<br/>
 						  </article>
 							<hr/>
-							
 					  </li>
           </div>
 					<br />
+					<!-- Sleeper App API Logic for UP/DOWN Trend NFL Players  -->
 					<h3> *** Up Trend Players *** </h3>
 					<hr/>
 					<br/>
 					<iframe src="https://sleeper.app/embed/players/nfl/trending/add?lookback_hours=24&limit=25" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
 					<br />
 					<br />
-										<h3> *** Down Trend Players *** </h3>
-										<hr/>
-										<br/>
-
+					<h3> *** Down Trend Players *** </h3>
+					<hr/>
+					<br/>
 					<iframe src="https://sleeper.app/embed/players/nfl/trending/drop?lookback_hours=24&limit=25" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
-		
-
-
 					<!-- <li>
 						<article>
 							<header>
@@ -526,11 +498,9 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 							</header>
 							<a href="single.html" class="image"><img src="images/pic09.jpg" alt="" /></a>
 						</article>
-					</li> -->
-					
+					</li> -->	
 				</ul>
 			</section>
-
 			<!-- About -->
 			<!-- <section class="blurb">
 				<h2>About</h2>
@@ -540,23 +510,19 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					<li><a href="#" class="button">Learn More</a></li>
 				</ul>
 			</section> -->
-
-
 			<!-- Footer -->
 			<section id="footer">
 				<ul class="icons">
-					<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+					<!-- <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 					<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
 					<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 					<li><a href="#" class="icon solid fa-rss"><span class="label">RSS</span></a></li>
-					<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+					<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li> -->
 				</ul>
 				<p class="copyright">&copy; Dad's Fantasy App. Design: <a href="http://html5up.net">HTML5 UP</a>.</p>
 			</section>
-
 		</section>
 	</div>
-
     <!-- This is the div for the nfl articles from the NEWS API -->
     <!-- <div v-for="article in nfl_articles.articles">
     <h1>{{ article.source.name }}</h1>
@@ -571,23 +537,15 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
     <h1>{{ article.title }}</h1>
     </div> -->
 
-
- 
-
-
-      <!-- The RSS Feed Elements -->
+    <!-- The RSS Feed Elements -->
      <!-- <VueRssFeed :feedUrl="nflRotoworldFeed" :name="name" :limit="limit"/>
      <VueRssFeed :feedUrl="nbaRotoworldFeed" :name="name" :limit="limit"/>
      <VueRssFeed :feedUrl="rotoworldFeed" :name="name" :limit="limit"/>
-     <VueRssFeed :feedUrl="ffaNewsFeed" :name="name" :limit="ffalimit"/>
      <VueRssFeed :feedUrl="dynastyNerdsNewsFeed" :name="name" :limit="limit"/>
-     <VueRssFeed :feedUrl="sleeperUNewsFeed" :name="name" :limit="sleeperUlimit"/>
      <VueRssFeed :feedUrl="playerProfilerFeed" :name="name" :limit="playerProfilerlimit"/>
-     <VueRssFeed :feedUrl="hoopsHypeNewsFeed" :name="name" :limit="hoopsHypeNewslimit"/>
-     <VueRssFeed :feedUrl="hoopDoctorsNewsfeed" :name="name" :limit="hoopDoctorsNewslimit"/>
      <VueRssFeed :feedUrl="basketballInsidersNewsfeed" :name="name" :limit="basketballInsidersNewslimit"/> -->
 
-    
+    <!-- Filtered Keyword Tweets Loop -->
     <!-- <div v-for="filtered_keyword_tweet in filtered_keyword_tweets.data">
     <h1>{{ filtered_keyword_tweet.id }}</h1>
     <h1>{{ filtered_keyword_tweet.text }}</h1>
@@ -597,15 +555,15 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
   </div>
 </template>
 
-<style>
 
+
+<style>
 pre {
   max-height: 300px;
 	max-width: 100%;
   overflow-y: auto;
 	white-space: normal;
 	border: 2px solid #777;
-
 }
 
 pre[class] {
@@ -618,6 +576,9 @@ pre[class] {
   background-color: inherit;
 }
 </style>
+
+
+
 <script>
   import axios from 'axios';
   import VueRssFeed from "vue-rss-feed";
@@ -634,17 +595,9 @@ pre[class] {
         limit: 5,
         nbaRotoworldFeed: "http://localhost:3000/rotowire_nba_news",
         rotoworldFeed: "http://localhost:3000/rotowire_news",
-        ffaNewsFeed: "http://localhost:3000/ffa_news",
-        ffalimit: 1,
         dynastyNerdsNewsFeed: "http://localhost:3000/dynasty_nerds_news",
-        sleeperUNewsFeed: "http://localhost:3000/sleeper_u_news",
-        sleeperUlimit: 3,
         playerProfilerFeed: "http://localhost:3000/player_profiler_news",
         playerProfilerlimit: 8,
-        hoopsHypeNewsFeed: "http://localhost:3000/hoops_hype_news",
-        hoopsHypeNewslimit: 10,
-        hoopDoctorsNewsfeed: "http://localhost:3000/hoop_doctors_news",
-        hoopDoctorsNewslimit: 1,
         basketballInsidersNewsfeed: "http://localhost:3000/basketball_insiders_news",
         basketballInsidersNewslimit: 10,
         // End of Rss Feeds
@@ -654,10 +607,7 @@ pre[class] {
 				filtered_keyword_2_tweets: [],
 				filtered_keyword_3_tweets: [],
 				filtered_keyword_4_tweets: [],
-
 				stream_tweets: []
-        
-
       };
     },
     created: function () {
@@ -670,7 +620,7 @@ pre[class] {
         console.log(response.data)
         this.nba_articles = response.data
       }),
-      // Twitter API calls to Backend     
+      // Twitter API calls to Backend for Filtered Keyword Search     
       axios.get("http://localhost:3000/filtered_keyword_tweets").then(response => {
       console.log(response.data)
       this.filtered_keyword_tweets = response.data
@@ -688,8 +638,9 @@ pre[class] {
       this.filtered_keyword_4_tweets = response.data
       }),
 
+			// API Call To the Live Stream Echo
 			setInterval( () => { 
-				axios.get("http://localhost:3001/live_stream_echos").then(response => {
+				axios.get("https://secret-reef-98078.herokuapp.com/live_stream_echos").then(response => {
 					if (this.stream_tweets.length > 0) {
 						if (response.data.data.id !== this.stream_tweets[this.stream_tweets.length-1].data.id) {
 					this.stream_tweets.push(response.data);
@@ -705,28 +656,17 @@ pre[class] {
      		})
 			},5000)
 			
-
-        
-      
     },
     methods: {
+			// Refresh Feed *** 'give it a kick in the can'
 			refreshFeed: function () {
-				axios.get("http://localhost:3001/live_stream_tweets").then(response => {
+				axios.get("https://secret-reef-98078.herokuapp.com/live_stream_tweets").then(response => {
       console.log(response.data)
       }
 			)
-			},
-			showModal: function () {
-				console.log('modal')
-				document.querySelector("#show-modal").showModal()
 			}
-			
-			
-			
 			},
-
     mounted: function () {
-
     }
   };
 </script>

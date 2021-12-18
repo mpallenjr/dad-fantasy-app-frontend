@@ -14,9 +14,4 @@
 </template>
 
 <style> 
-
-
-
-
-
 </style>
