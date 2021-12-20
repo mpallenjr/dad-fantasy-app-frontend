@@ -60,10 +60,10 @@ import axios from 'axios';
     methods: {
 searchPlayers: function () {
   console.log(this.inputPlayerData.firstName, this.inputPlayerData.lastName)
-  axios.get(`http://localhost:3000/player_news_headlines?first_name=${this.inputPlayerData.firstName}&last_name=${this.inputPlayerData.lastName}`).then(response => {
+  axios.get(`https://infinite-meadow-34805.herokuapp.com/player_news_headlines?first_name=${this.inputPlayerData.firstName}&last_name=${this.inputPlayerData.lastName}`).then(response => {
     this.inputPlayerResults = response.data.articles
   }),
-  axios.get(`http://localhost:3000/player_twitter_keywords?first_name=${this.inputPlayerData.firstName}&last_name=${this.inputPlayerData.lastName}`).then(response => {
+  axios.get(`https://infinite-meadow-34805.herokuapp.com/player_twitter_keywords?first_name=${this.inputPlayerData.firstName}&last_name=${this.inputPlayerData.lastName}`).then(response => {
     console.log(response.data)
     this.inputPlayerTweetResults = response.data.data
   })
