@@ -1,23 +1,50 @@
 <template>
   <div class="home">
-   <p>first name:  <input type="text" v-model="inputPlayerData.firstName"> </p>
-   <p>last name:  <input type="text" v-model="inputPlayerData.lastName"> </p>
-   <button v-on:click="searchPlayers()">Search</button>
+   first name:  <input type="text" class="center" v-model="inputPlayerData.firstName"> last name:  <input type="text" class="center" v-model="inputPlayerData.lastName">
+   <br/>
+   <br/>
+   <br/>
+   <button class="center" v-on:click="searchPlayers()">Search</button>
+   <hr/>
+   
     
-    <div v-for="tweet in inputPlayerTweetResults">
-     <p> {{tweet.text}}</p>
-    </div>
-    <div v-for="result in inputPlayerResults">
-      {{result.source.name}}
-      {{result.author}}
-      {{result.title}}
-      {{result.description}}
-      <img v-bind:src="result.urlToImage">
-    </div>
+<form>
+<h3>Recent Tweets</h3>
+									<div  v-for="tweet in inputPlayerTweetResults">
+										<table>
+											<!-- <thead>
+												<tr>
+													<th>Recent Tweets</th>
+												</tr>
+											</thead> -->
+											<tbody>
+												<tr>							
+													<td>{{tweet.text}}</td>	
+												</tr>			
+											</tbody>
+										</table>
+									</div>
+                  <div v-for="result in inputPlayerResults" class="headlines" >
+                  <h2>{{result.title}} | {{result.author}} - {{result.source.name}} </h2>
+									<p><span class="image left"><img v-bind:src="result.urlToImage" v-bind:alt="result.description" width=125 height=125/></span>{{result.description}}</p>
+                  <br />
+                  <br />
+                  <br />
+                  </div>
+</form>
+
+							
   </div>
 </template>
 
-<style></style>
+<style>
+
+headlines
+{
+text-align:center;
+text-justify:values;
+}
+</style>
 
 <script>
 import axios from 'axios';

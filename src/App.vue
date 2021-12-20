@@ -6,6 +6,7 @@
 			<nav class="links">
 				<ul>
 					<li><a href="/signup">Subscribe</a></li>
+					<li><a href="/player">Player Resource</a></li>
 				</ul>
 			</nav>
 		</header>
