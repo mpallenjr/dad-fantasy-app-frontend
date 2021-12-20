@@ -13,7 +13,7 @@
 						<hr/>
 					</div>
 				</pre>
-				<button v-on:click="refreshFeed()"> Refresh Feed </button>
+				<button class="center" v-on:click="refreshFeed()"> Start/Refresh Feed </button>
 				<br/>
 				<br/>
 				<br/>
