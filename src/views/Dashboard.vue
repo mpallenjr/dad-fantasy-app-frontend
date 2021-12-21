@@ -519,7 +519,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					<li><a href="#" class="icon solid fa-rss"><span class="label">RSS</span></a></li>
 					<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li> -->
 				</ul>
-				<p class="copyright">&copy; Dad's Fantasy App. Design: <a href="http://html5up.net">HTML5 UP</a>.</p>
+				<p class="copyright">&copy; Dad's Fantasy Sports Design: <a href="http://html5up.net">HTML5 UP</a>.</p>
 			</section>
 		</section>
 	</div>
