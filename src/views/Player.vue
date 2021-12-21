@@ -35,7 +35,7 @@
       </div>
       <div v-for="result in inputPlayerResults" class="headlines" >
       <h2>{{result.title}} | {{result.author}} - {{result.source.name}} </h2>
-      <p><span class="image left"><a v-bind:href="result.url"/><img v-bind:src="result.urlToImage" v-bind:alt="result.description" width=125 height=125> <a/></span>{{result.description}}</p>
+      <p><a v-bind:href="result.url"/><span class="image left"><img v-bind:src="result.urlToImage" v-bind:alt="result.description" width=125 height=125></span><a/>{{result.description}}</p>
       <br />
       <br />
       <br />
