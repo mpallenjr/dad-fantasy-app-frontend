@@ -444,7 +444,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					    <article>
 							  <header>
 								  <h3>{{ filtered_keyword_2_tweet.text }}</h3>
-								  <time class="published" datetime="2015-10-20">{{ filtered_keyword_2_tweet.id }}</time>
+								  <time class="published" datetime=""></time>
 							  </header>
                 <hr/>
 								<br/>
@@ -457,7 +457,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					    <article>
 							  <header>
 								  <h3>{{ filtered_keyword_3_tweet.text }}</h3>
-								  <time class="published" datetime="2015-10-20">{{ filtered_keyword_3_tweet.id }}</time>
+								  <time class="published" datetime=""></time>
 							  </header>
                 <hr/>
 								<br/>
@@ -470,7 +470,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					    <article>
 							  <header>
 								  <h3>{{ filtered_keyword_4_tweet.text }}</h3>
-								  <time class="published" datetime="2015-10-20">{{ filtered_keyword_4_tweet.id }}</time>
+								  <time class="published" datetime=""></time>
 							  </header>
                 <hr/>
 								<br/>
