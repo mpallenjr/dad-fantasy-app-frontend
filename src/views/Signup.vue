@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-        <img src="/images/Subscribe.png" width=800 height=800 class="center">
+    <img src="/images/subscribe.png" width=800 height=800 class="center">
 
     <div id="contact">
       <p> <form id="fs-frm" name="registration-form" accept-charset="utf-8" action="https://formspree.io/f/mayvylad" method="post" class="center">
@@ -11,7 +11,7 @@
         <input type="submit" value="Tune In" class="center">
       </form> </p>
     </div>
-            <img src="/images/tune-in.png" width=800 height=800 class="center">
+    <img src="/images/tune-in.png" width=800 height=800 class="center">
 
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <img src="/images/landing-page.png" width=800 height=800 class="center">
-    <a href="dashboard"> <button class="center"> <b>Lets GOOOOOO!!!</b></button></a>
+    <a href="dashboard"> <button class="center"> <b>Click Here</b></button></a>
   </div>
 </template>
 

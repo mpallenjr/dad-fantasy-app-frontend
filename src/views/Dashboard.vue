@@ -392,7 +392,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<section id="sidebar">
 				<!-- Intro TOP LEFT -->
 				<section id="intro">
-					<a href="/dashboard" class="logo"><img src="images/dad-avatar.png" alt="" /></a>
+					<a href="/dashboard" class="logo"><img src="images/dad-avatar.png" alt="dad avatar" /></a>
 					<header>
 						<h2>dad's edge</h2>
 						<u><h3>*** HEADLINES ***</h3></u>
@@ -408,7 +408,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 								<h3><a  v-bind:href="article.url" target="_blank" >{{ article.title }}</a></h3>
 								<time class="published" datetime="">{{ article.source.name }}</time>
 							</header>
-						<a  v-bind:href="article.url" target="_blank" class="image"><img v-bind:src="article.urlToImage" alt="" /></a>
+						<a  v-bind:href="article.url" target="_blank" class="image"><img v-bind:src="article.urlToImage" v-bind:alt="article.title" /></a>
 						</article>
           </div>
 					<!-- Mini Post NEWS API NBA -->
@@ -418,7 +418,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 								<h3><a  v-bind:href="article.url" target="_blank">{{ article.title }}</a></h3>
 								<time class="published" datetime="">{{ article.source.name }}</time>
 							</header>
-							<a v-bind:href="article.url" target="_blank" class="image"><img v-bind:src="article.urlToImage" alt="" /></a>
+							<a v-bind:href="article.url" target="_blank" class="image"><img v-bind:src="article.urlToImage" v-bind:alt="article.title" /></a>
 						</article>
           </div>
 
@@ -612,29 +612,23 @@ pre[class] {
     },
     created: function () {
       // NEWS API Calls to Backend
-     axios.get("https://lit-bastion-35539.herokuapp.com/nfl_news.json").then(response => {
-        console.log(response.data)
+    	axios.get("https://lit-bastion-35539.herokuapp.com/nfl_news.json").then(response => {
         this.nfl_articles = response.data
       }),
       axios.get("https://lit-bastion-35539.herokuapp.com/nba_news.json").then(response => {
-        console.log(response.data)
         this.nba_articles = response.data
       }),
       // Twitter API calls to Backend for Filtered Keyword Search     
       axios.get("https://lit-bastion-35539.herokuapp.com/filtered_keyword_tweets").then(response => {
-      console.log(response.data)
       this.filtered_keyword_tweets = response.data
       }),
 			axios.get("https://lit-bastion-35539.herokuapp.com/filtered_keyword_2_tweets").then(response => {
-      console.log(response.data)
       this.filtered_keyword_2_tweets = response.data
       }),
 			axios.get("https://lit-bastion-35539.herokuapp.com/filtered_keyword_3_tweets").then(response => {
-      console.log(response.data)
       this.filtered_keyword_3_tweets = response.data
       }),
 			axios.get("https://lit-bastion-35539.herokuapp.com/filtered_keyword_4_tweets").then(response => {
-      console.log(response.data)
       this.filtered_keyword_4_tweets = response.data
       }),
 
@@ -650,18 +644,15 @@ pre[class] {
 					}
         	// console.log(response.data.data.id === stream_tweets[stream_tweets.length-1].data.id)
 					// if response.data is the last element of the array dont push (can also manipulate array amount here)	
-					console.log("add to stream")
-					console.log(this.stream_tweets)
 			
      		})
 			},10000)
 			
     },
     methods: {
-			// Refresh Feed *** 'give it a kick in the can'
+			// Start/Refresh Feed -- sometimes the stream needs to be manually reconnected.  This jumpstarts the tweet feed again. NEED TO CREATE A WAY TO PREVENT A PERSON FROM CLICKING MORE THAN ONCE IN XX AMOUNT OF TIME TO PREVENT UNINTENDED CRASH. NEEDS TO REMAIN TRUE EVEN IN A PAGE REFRESH.(OR A BETTER ANSWER)
 			refreshFeed: function () {
 				axios.get("https://secret-reef-98078.herokuapp.com/live_stream_tweets").then(response => {
-      console.log(response.data)
       }
 			)
 			}
